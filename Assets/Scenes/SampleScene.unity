@@ -639,11 +639,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1214718840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.43, y: -3.68, z: 0}
+  m_LocalPosition: {x: -7.39, y: -3.68, z: -1.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1214718845
 MonoBehaviour:
@@ -661,6 +661,11 @@ MonoBehaviour:
   slowVelocidad: 0
   sprint: 0
   slow: 0
+  agacharse: 0
+  saltar: 0
+  fondo: {fileID: 0}
+  velocidadDespl: 0
+  jumpForce: {x: 0, y: 0}
 --- !u!1 &1644809161
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,5 +762,5 @@ Transform:
   m_LocalScale: {x: 32.70384, y: 0.44472578, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
