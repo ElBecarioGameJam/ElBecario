@@ -12,6 +12,10 @@ public class player : MonoBehaviour
     public bool sprint;
     public bool slow;
 
+    public bool agacharse;
+    public bool saltar;
+
+
     public fondo fondo;
     public float velocidadDespl;
 
@@ -22,7 +26,6 @@ public class player : MonoBehaviour
         sprintVelocidad = 19;
         slowVelocidad = 5;
 
-        
     }
 
     // Update is called once per frame
@@ -59,24 +62,57 @@ public class player : MonoBehaviour
     {
         if (gameObject.transform.position.x > 24)
             gameObject.transform.position = new Vector3(-7, -3, 0);
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        //el jugador corre
+        if (Input.GetKey(KeyCode.D))
         {
             sprint = true;
         }
 
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        //el jugador deja de correr
+        else if (Input.GetKeyUp(KeyCode.D))
         {
             sprint = false;
         }
 
-        else if (Input.GetKey(KeyCode.LeftControl))
+        //el jugador frena
+        else if (Input.GetKey(KeyCode.A))
         {
             slow = true;
         }
 
-        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        //el jugador deja de frenar
+        else if (Input.GetKeyUp(KeyCode.A))
         {
             slow = false;
+        }
+
+        //el jugador salta
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            saltar = true;
+        }
+        //el jugador se agacha
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            agacharse = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            agacharse = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (saltar) //TODO
+        {
+            this.rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+            saltar = false;
+        }
+        if (agacharse)
+        {
+            gameObject.transform.localScale += new Vector3(0, -5, 0);
         }
     }
 }
