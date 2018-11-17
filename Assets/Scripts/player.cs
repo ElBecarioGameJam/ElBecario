@@ -19,12 +19,17 @@ public class player : MonoBehaviour
     public fondo fondo;
     public float velocidadDespl;
 
+    public Vector2 jumpForce;
+
+    private bool IsJumping;
+
     // Use this for initialization
     void Start()
     {
-        normalVelocidad = 10;
-        sprintVelocidad = 19;
-        slowVelocidad = 5;
+        normalVelocidad = 5;
+        sprintVelocidad = 7;
+        slowVelocidad = 3;
+        IsJumping = false;
 
     }
 
@@ -107,12 +112,25 @@ public class player : MonoBehaviour
     {
         if (saltar) //TODO
         {
-            this.rigidbody2D.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-            saltar = false;
+            
+            if(!IsJumping)
+            {
+                GetComponent<Rigidbody2D>().AddForce(jumpForce, ForceMode2D.Impulse);
+            }
+
         }
         if (agacharse)
         {
             gameObject.transform.localScale += new Vector3(0, -5, 0);
+        }
+    }
+
+
+    void OnCollisionEnter2D(Collision col)
+    {
+        if (col.gameObject.tag == "ground")
+        {
+            IsJumping = false;
         }
     }
 }
